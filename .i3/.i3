@@ -1,0 +1,1 @@
+/home/4opolka/dotfiles/.i3
