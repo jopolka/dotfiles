@@ -1,16 +1,14 @@
-PACKAGE_MANAGER := sudo dnf install -y
+update:
+	sudo apt-get update -y
+	sudo apt-get upgrade -y
+	sudo apt-get autoremove -y
+	sudo apt-get autoclean -y
 
-install_vim:
-	$(PACKAGE_MANAGER) vim
+install_basic:
+	sudo apt-get install -y kitty nm-applet scrot rofi
 
-install_zsh:
-	$(PACKAGE_MANAGER) zsh util-linux-user
-	sh -c i "$$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-	git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/.oh-my-zsh/custom/themes/powerlevel10k
-	chsh -s $$(which zsh)
+install_i3:
+	sudo apt-get install -y i3_wm py3status 
+	ln -s ${pwd}/.i3 .i3
 
-vim: install_vim
-
-zsh: install_zsh
-
-.PHONY: install_vim install_zsh vim zsh
+.PHONY: update install_basic insta
