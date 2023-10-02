@@ -9,7 +9,7 @@ install_basic:
 
 install_i3:
 ifeq (,$(wildcard ~/.i3))
-	sudo apt-get install -y i3_wm py3status 
+	sudo apt-get install -y i3-wm py3status 
 	ln -s $(pwd)/.i3 ~/.i3
 else
 	@echo "i3 already installed"
