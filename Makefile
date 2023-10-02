@@ -18,14 +18,8 @@ endif
 install_greetd:
 ifeq (,$(wildcard /etc/greetd/config.toml))
 	sudo apt-get install -y cargo
-	git clone https://github.com/kennylevinsen/greetd build_greetd
-	cd build_greetd
-	cargo build --release
-	sudo cp target/release/{greetd,agreety} /usr/local/bin/
-	sudo cp greetd.service /etc/systemd/system/greetd.service
-	cd ..
-	rm -rf build_greetd
-	cd ..
+
+	./greetd/install.sh
 
 	mkdir /etc/greetd
 	ln -s $(pwd)/greetd/config.toml /etc/greetd/config.toml
