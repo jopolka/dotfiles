@@ -6,6 +6,8 @@ font pango:FontAwesome 8
 #start network-manager applet
 exec --no-startup-id nm-applet
 
+exec_always --no-startup-id ./.config/polybar/launch.sh
+
 bar {
     position top
     status_command py3status
