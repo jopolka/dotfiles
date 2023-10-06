@@ -11,6 +11,7 @@ install_i3:
 ifeq (,$(wildcard ~/.i3))
 	sudo apt-get install -y i3-wm py3status python3-tzlocal libdbus-1-dev libdbus-glib-1-dev
 	ln -s $(shell pwd)/.i3 ~/.i3
+	ln -s $(shell pwd)/.i3/.xinitrc ~/.xinitrc
 else
 	@echo "i3 already installed"
 endif
@@ -26,7 +27,8 @@ ifeq (,$(wildcard /etc/greetd/config.toml))
 	sudo useradd -M -G video greeter
 	sudo chmod -R go+r /etc/greetd/
 
-	systemctl enable --now greetd
+	sudo systemctl disable lightdm
+	sudo systemctl enable greetd
 else
 	@echo "greetd already installed"
 endif
@@ -35,17 +37,24 @@ endif
 install_tuigreet:
 ifeq (,$(wildcard /usr/local/tuigreet))
 	sudo apt-get install -y cargo
-	git clone https://github.com/apognu/tuigreet
-	cd tuigreet
-	cargo build --release
-	mv target/release/tuigreet /usr/local/bin/tuigreet
-	cd ..
-	rm -rf tuigreet
+	./tuigreet/build.sh
 else
 	@echo "tuigreet already installed"
 endif
 
-complete: update install_basic install_i3 install_greetd install_tuigreet
+install_fonts:
+	git clone https://github.com/ryanoasis/nerd-fonts
+	cd nerd-fonts
+	./install.sh
+	cd..
+	rm -rg nerd-fonts
+
+install_zsh:
+	sudo apt install zsh -y
+	sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+
+complete: update install_basic install_fonts install_i3 install_tuigreet install_greetd install_zsh
 	setxkbmap de
 
 .PHONY: update install_basic install_i3 install_greetd
