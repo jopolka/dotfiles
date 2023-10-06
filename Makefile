@@ -9,8 +9,8 @@ install_basic:
 
 install_i3:
 ifeq (,$(wildcard ~/.i3))
-	sudo apt-get install -y i3-wm py3status python3-tzlocal libdbus-1-dev libdbus-glib-1-de
-	ln -s $(pwd)/.i3 ~/.i3
+	sudo apt-get install -y i3-wm py3status python3-tzlocal libdbus-1-dev libdbus-glib-1-dev
+	ln -s $(shell pwd)/.i3 ~/.i3
 else
 	@echo "i3 already installed"
 endif
@@ -22,7 +22,7 @@ ifeq (,$(wildcard /etc/greetd/config.toml))
 	./greetd/build.sh
 
 	sudo mkdir /etc/greetd
-	sudo ln -s $(pwd)/greetd/config.toml /etc/greetd/config.toml
+	sudo ln -s $(shell pwd)/greetd/config.toml /etc/greetd/config.toml
 	sudo useradd -M -G video greeter
 	sudo chmod -R go+r /etc/greetd/
 
