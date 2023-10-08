@@ -42,6 +42,10 @@ else
 	@echo "tuigreet already installed"
 endif
 
+install_kitty:
+	sudo apt-get install -y kitty
+	ln -s -f $(shell pwd)/kitty ~/.config/kitty
+
 install_fonts:
 	git clone https://github.com/ryanoasis/nerd-fonts
 	cd nerd-fonts
@@ -54,7 +58,7 @@ install_zsh:
 	sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 
-complete: update install_basic install_fonts install_i3 install_tuigreet install_greetd install_zsh
+complete: update install_basic install_fonts install_i3 install_tuigreet install_greetd install_zsh install_kitty
 	setxkbmap de
 
-.PHONY: update install_basic install_i3 install_greetd
+.PHONY: update install_basic install_i3 install_greetd install_tuigreet install_kitty
