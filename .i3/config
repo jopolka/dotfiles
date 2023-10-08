@@ -6,11 +6,12 @@ font pango:FontAwesome 8
 #start network-manager applet
 exec --no-startup-id nm-applet
 
-exec_always --no-startup-id ./.config/polybar/launch.sh
-
 bar {
     position top
-    status_command py3status
+    status_command ~/dotfiles/bumblebee-status/bumblebee-status \
+	-m xrandr vpn nic battery bluetooth pasink pasource apt datetime \
+        -p datetime.format="%H:%M:%S %d.%m.%y" nic.format="{intf} {ip} {ssid} {strength}" xrandr.autotoggle_side="left"\
+        -t solarized-powerline
 }
 
 ### key bindings ################################
