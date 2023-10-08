@@ -5,7 +5,7 @@ update:
 	sudo apt-get autoclean -y
 
 install_basic:
-	sudo apt-get install -y kitty scrot rofi git build-essential xcb libxcb-xkb-dev vim bat ripgrep
+	sudo apt-get install -y kitty scrot rofi git build-essential xcb libxcb-xkb-dev vim bat ripgrep curl
 
 install_i3:
 ifeq (,$(wildcard ~/.i3))
