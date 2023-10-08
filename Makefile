@@ -48,11 +48,12 @@ install_kitty:
 	ln -s -f $(shell pwd)/kitty ~/.config/kitty
 
 install_fonts:
-	git clone https://github.com/ryanoasis/nerd-fonts
-	cd nerd-fonts
-	./install.sh
-	cd..
-	rm -rg nerd-fonts
+	./fonts/install.sh
+	# git clone https://github.com/ryanoasis/nerd-fonts
+	# cd nerd-fonts
+	# ./install.sh
+	# cd..
+	# rm -rg nerd-fonts
 
 install_zsh:
 	sudo apt install zsh -y
