@@ -47,6 +47,7 @@ install_kitty:
 	sudo apt-get install -y kitty
 	ln -s -f $(shell pwd)/kitty ~/.config/kitty
 
+
 install_fonts:
 	./fonts/install.sh
 	# git clone https://github.com/ryanoasis/nerd-fonts
@@ -58,6 +59,8 @@ install_fonts:
 install_zsh:
 	sudo apt install zsh -y
 	sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+	git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+
 
 
 complete: update install_basic install_fonts install_i3 install_tuigreet install_greetd install_zsh install_kitty
