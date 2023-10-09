@@ -10,7 +10,7 @@ install_basic:
 install_i3:
 ifeq (,$(wildcard ~/.i3))
 	sudo apt-get install -y i3-wm py3status python3-tzlocal libdbus-1-dev libdbus-glib-1-dev
-	git clone git://github.com/tobi-wan-kenobi/bumblebee-status
+	git clone https://github.com/tobi-wan-kenobi/bumblebee-status
 	ln -s $(shell pwd)/.i3 ~/.i3
 	ln -s $(shell pwd)/.i3/.xinitrc ~/.xinitrc
 else
