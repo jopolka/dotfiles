@@ -65,10 +65,12 @@ install_zsh:
 	chsh -s $(which zsh)
 	sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 	git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+	ln -s $(shell pwd)/.zsh/.p10k.zsh ~/.p10k.zsh
+	ln -s $(shell pwd)/.zsh/.zshrc ~/.zshrc
 
 
 
 complete: update install_basic install_fonts install_i3 install_tuigreet install_greetd install_zsh install_kitty
 	setxkbmap de
 
-.PHONY: update install_basic install_i3 install_greetd install_tuigreet install_kitty
+.PHONY: update install_basic install_fonts install_i3 install_tuigreet install_greetd install_zsh install_kitty
