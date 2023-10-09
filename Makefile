@@ -21,9 +21,13 @@ install_greetd:
 ifeq (,$(wildcard /etc/greetd/config.toml))
 	sudo apt-get install -y cargo libpam0g-dev python3-pydbus python3-gi python3-gi-cairo gir1.2-gtk-4.0
 
-	./greetd/build.sh
+        if apt-cache show greetd | grep "No packages found"; then
+	    ./greetd/build.sh
+	    sudo mkdir /etc/greetd
+	else
+            sudo apt-get install greetd
+        fi
 
-	sudo mkdir /etc/greetd
 	sudo ln -s $(shell pwd)/greetd/config.toml /etc/greetd/config.toml
 	sudo useradd -M -G video greeter
 	sudo chmod -R go+r /etc/greetd/
@@ -58,7 +62,8 @@ install_fonts:
 
 install_zsh:
 	sudo apt install zsh -y
-	sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+	chsh -s $(which zsh)
+	sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 	git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 
 
