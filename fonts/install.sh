@@ -1,26 +1,20 @@
 #!/bin/sh
-mkdir install_fonts
-cd install_fonts
-curl -L https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Regular.ttf --output MesloLGS\ NF\ Regular.ttf
-curl -L https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold.ttf --output MesloLGS\ NF\ Bold.ttf
-curl -L https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Italic.ttf --output MesloLGS\ NF\ Italic.ttf
-curl -L https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold%20fItalic.ttf --output MesloLGS\ NF\ Bold\ Italic.ttf
-mkdir -p ~/.fonts
-cp *.ttf ~/.fonts/
 
-git clone https://github.com/stark/siji && cd siji
+curl -L https://github.com/Crosse/font-install/releases/download/v1.5.0/font-install-linux-amd64.zip
+unzip font-install-linux-amd64.zip
+sudo mv font-install-linux-amd64 /usr/bin/local/font-install
+rm font-install-linux-amd64.zip
+
+
+font-install https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Regular.ttf
+font-install https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold.ttf
+font-install https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Italic.ttf
+font-install https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold%20fItalic.ttf
+font-install https://use.fontawesome.com/releases/v5.15.4/fontawesome-free-5.15.4-desktop.zip
+git clone https://github.com/stark/siji
+cd siji
 ./install.sh
 cd ..
+rm -rf siji
 
-curl -L https://use.fontawesome.com/releases/v5.15.4/fontawesome-free-5.15.4-desktop.zip
-unzip fontawesome-free-5.15.4-desktop.zip
-cd fontawesome-free-5.15.4-desktop
-cp Font\ Awesome\ 5\ Free-Regular-400.otf ~/.local/share/fonts/
-mkdir -p ~/.fonts
-cp *.oft ~/.fonts/
-
-cd ..
-
-cd ..
-rm -rf install_fonts
 fc-cache -fv
