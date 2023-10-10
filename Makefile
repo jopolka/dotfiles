@@ -21,12 +21,12 @@ install_greetd:
 ifeq (,$(wildcard /etc/greetd/config.toml))
 	sudo apt-get install -y cargo libpam0g-dev python3-pydbus python3-gi python3-gi-cairo gir1.2-gtk-4.0
 
-	if apt-cache show greetd | grep "No packages found"; then
-	    ./greetd/build.sh
-	    sudo mkdir /etc/greetd
-	else
+	ifeq (,$(apt-cache show greetd | grep "No packages found"))
 		sudo apt-get install greetd
-	fi
+	else
+		./greetd/build.sh
+		sudo mkdir /etc/greetd
+	endif
 
 	sudo ln -s $(shell pwd)/greetd/config.toml /etc/greetd/config.toml
 	sudo useradd -M -G video greeter
