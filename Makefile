@@ -28,7 +28,7 @@ ifeq (,$(wildcard /etc/greetd/config.toml))
 		sudo mkdir /etc/greetd
         endif
 
-	sudo ln -s $(shell pwd)/greetd/config.toml /etc/greetd/config.toml
+	sudo sudo ln -f -s $(shell pwd)/greetd/config.toml /etc/greetd/config.toml
 	sudo useradd -M -G video greeter
 	sudo chmod -R go+r /etc/greetd/
 
