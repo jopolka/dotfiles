@@ -1,8 +1,8 @@
 #!/bin/sh
 
-curl -L https://github.com/Crosse/font-install/releases/download/v1.5.0/font-install-linux-amd64.zip
+curl -L https://github.com/Crosse/font-install/releases/download/v1.5.0/font-install-linux-amd64.zip --output font-install-linux-amd64.zip
 unzip font-install-linux-amd64.zip
-sudo mv font-install-linux-amd64 /usr/bin/local/font-install
+sudo mv font-install-linux-amd64 /usr/local/bin/font-install
 rm font-install-linux-amd64.zip
 
 
