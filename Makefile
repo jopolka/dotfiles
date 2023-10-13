@@ -57,14 +57,7 @@ install_fonts:
 	# rm -rg nerd-fonts
 
 install_zsh:
-	sudo apt install zsh -y
-	chsh -s $(which zsh)
-	ln -s -f $(shell pwd)/.zsh/.zshrc ~/.zshrc
-	sh -c "ZSH=$(shell pwd)/.zsh/.oh-my-zsh $(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended --keep-zshrc
-	git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
-	ln -s $(shell pwd)/.zsh/.p10k.zsh ~/.p10k.zsh
-
-
+	./zsh/install.sh
 
 complete: update install_basic install_fonts install_i3 install_tuigreet install_greetd install_zsh install_kitty
 	setxkbmap de
