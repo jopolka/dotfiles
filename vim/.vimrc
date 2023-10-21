@@ -44,6 +44,9 @@ Plug 'ryanoasis/vim-devicons' "must be loaded last, because it enhances the othe
 call plug#end()
 
 "======================================================================  General
+set encoding=utf-8
+set fileencoding=utf-8
+set fileformats=unix
 
 "Invisible character colors
 highlight NonText guifg=#4a4a59
@@ -54,12 +57,8 @@ set listchars=tab:▸\ ,eol:¬
 syntax on
 colo pablo
 
-set fileformats=unix
-
 set nu
 set visualbell
-set encoding=utf-8
-set fileencoding=utf-8
 
 filetype plugin indent on
 autocmd Filetype python setlocal expandtab tabstop=4 shiftwidth=4 softtabstop=4
