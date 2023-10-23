@@ -1,9 +1,13 @@
 #!/bin/sh
 
-wget https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.tar.gz .
-tar xzvf nvim-linux64.tar.gz
+sudo snap install nvim --classic
+git clone https://github.com/NvChad/NvChad ~/.config/nvim --depth 1 && nvim
 
-sudo mv nvim-linux64/bin/nvim /usr/bin/nvim
+go install mvdan.cc/gofumpt@latest
+go install -v github.com/incu6us/goimports-reviser/v3@latest
+go install github.com/segmentio/golines@latest
+go install github.com/go-delve/delve/cmd/dlv@latest
 
-rm -rf nvim-linux64
-rm nvim-linux64.tar.gz
+# symlink stuff in config dir
+# tmux integration
+# :TSInstall go
