@@ -28,7 +28,7 @@ ifeq (,$(wildcard /etc/greetd/config.toml))
 	sudo useradd -M -G video greeter
 	sudo chmod -R go+r /etc/greetd/
 
-	sudo systemctl disable lightdm
+	sudo systemctl is-active lightdm && sudo systemctl disable lightdm
 	sudo systemctl enable greetd
 else
 	@echo "greetd already installed"
