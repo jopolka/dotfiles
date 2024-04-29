@@ -74,4 +74,4 @@ install_neovim:
 complete: update install_basic install_fonts install_i3 install_tuigreet install_greetd install_zsh install_kitty install_tmux install_sound
 	setxkbmap de
 
-.PHONY: update install_basic install_fonts install_i3 install_tuigreet install_greetd install_zsh install_kitty install_tmux install_sound
+.PHONY: update install_basic install_fonts install_i3 install_tuigreet install_greetd install kitty install_zsh install_tmux install_sound
