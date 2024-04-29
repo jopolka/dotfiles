@@ -12,7 +12,7 @@ install_sound:
 
 install_i3:
 ifeq (,$(wildcard ~/.i3))
-	sudo apt-get install -y i3-wm py3status python3-tzlocal libdbus-1-dev libdbus-glib-1-dev
+	sudo apt-get install -y i3-wm py3status python3-tzlocal libdbus-1-dev libdbus-glib-1-dev x11-xserver-utils
 	git clone https://github.com/tobi-wan-kenobi/bumblebee-status
 	ln -s $(shell pwd)/.i3 ~/.i3
 	ln -s $(shell pwd)/.i3/.xinitrc ~/.xinitrc
@@ -74,4 +74,4 @@ install_neovim:
 complete: update install_basic install_fonts install_i3 install_tuigreet install_greetd install_zsh install_kitty install_tmux install_sound
 	setxkbmap de
 
-.PHONY: update install_basic install_fonts install_i3 install_tuigreet install_greetd install kitty install_zsh install_tmux install_sound
+.PHONY: update install_basic install_i3 install_fonts install_tuigreet install_greetd install kitty install_zsh install_tmux install_sound
