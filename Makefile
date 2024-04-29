@@ -5,7 +5,10 @@ update:
 	sudo apt-get autoclean -y
 
 install_basic:
-	sudo apt-get install -y kitty scrot rofi git build-essential xcb libxcb-xkb-dev vim bat ripgrep curl fzf
+	sudo apt-get install -y kitty scrot rofi git build-essential xcb libxcb-xkb-dev vim bat ripgrep curl fzf zip unzip
+
+install_sound:
+	sudo pulseaudio gstreamer1.0-pulseaudio pulseaudio-module-bluetooth pavucontrol
 
 install_i3:
 ifeq (,$(wildcard ~/.i3))
@@ -68,7 +71,7 @@ install_vim:
 install_neovim:
 	./neovim/install.sh
 
-complete: update install_basic install_fonts install_i3 install_tuigreet install_greetd install_zsh install_kitty install_tmux
+complete: update install_basic install_fonts install_i3 install_tuigreet install_greetd install_zsh install_kitty install_tmux install_sound
 	setxkbmap de
 
-.PHONY: update install_basic install_fonts install_i3 install_tuigreet install_greetd install_zsh install_kitty install_tmux
+.PHONY: update install_basic install_fonts install_i3 install_tuigreet install_greetd install_zsh install_kitty install_tmux install_sound
