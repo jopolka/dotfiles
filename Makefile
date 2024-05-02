@@ -22,9 +22,11 @@ endif
 
 install_greetd:
 ifeq (,$(wildcard /etc/greetd/config.toml))
-	sudo apt-get install -y cargo libpam0g-dev python3-pydbus python3-gi python3-gi-cairo gir1.2-gtk-4.0
-
-	./greetd/build.sh
+	# sudo apt-get install -y cargo libpam0g-dev python3-pydbus python3-gi python3-gi-cairo gir1.2-gtk-4.0 
+	#
+	# ./greetd/build.sh
+	sudo apt-get -y install greetd
+	./greetd/install.sh
 
 	sudo mkdir /etc/greetd
 	sudo sudo ln -f -s $(shell pwd)/greetd/config.toml /etc/greetd/config.toml
@@ -49,7 +51,6 @@ endif
 install_kitty:
 	sudo apt-get install -y kitty
 	ln -s -f $(shell pwd)/kitty ~/.config/kitty
-
 
 install_fonts:
 	./fonts/install.sh
